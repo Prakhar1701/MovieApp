@@ -12,8 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import prakhar.udemy.jetpackcompose.movieapp.MovieRow
+import prakhar.udemy.jetpackcompose.movieapp.model.Movie
+import prakhar.udemy.jetpackcompose.movieapp.model.getMovies
 import prakhar.udemy.jetpackcompose.movieapp.navigation.MovieScreens
+import prakhar.udemy.jetpackcompose.movieapp.widgets.MovieRow
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -37,15 +39,7 @@ fun MainContent(
 
     navController: NavController,
 
-    movieList: List<String> = listOf(
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life",
-        "Happiness...",
-        "Prakhar",
-        "Shikhar"
-    )
+    movieList: List<Movie> = getMovies()
 ) {
 
     Column(modifier = Modifier.padding(12.dp)) {
@@ -53,7 +47,7 @@ fun MainContent(
             items(items = movieList) {
                 MovieRow(movie = it) { movie ->
 //                    Log.d("Movie Name", "MainContent: $movie")
-                    navController.navigate(route = MovieScreens.DetailsScreen.name+"/$movie")                       //Use navigate route
+                    navController.navigate(route = MovieScreens.DetailsScreen.name + "/$movie")                       //Use navigate route
                 }
             }
         }
