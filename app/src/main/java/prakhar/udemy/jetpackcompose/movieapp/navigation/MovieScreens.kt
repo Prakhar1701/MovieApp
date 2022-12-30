@@ -11,6 +11,5 @@ enum class MovieScreens {
             null -> HomeScreen
             else -> throw java.lang.IllegalArgumentException("Route $route is not recognized")
         }
-
     }
 }
