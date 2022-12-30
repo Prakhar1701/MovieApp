@@ -1,6 +1,5 @@
 package prakhar.udemy.jetpackcompose.movieapp.screens.home
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import prakhar.udemy.jetpackcompose.movieapp.MovieRow
+import prakhar.udemy.jetpackcompose.movieapp.navigation.MovieScreens
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -52,7 +52,8 @@ fun MainContent(
         LazyColumn {
             items(items = movieList) {
                 MovieRow(movie = it) { movie ->
-                    Log.d("Movie Name", "MainContent: $movie")
+//                    Log.d("Movie Name", "MainContent: $movie")
+                    navController.navigate(route = MovieScreens.DetailsScreen.name)                       //Use navigate route
                 }
             }
         }
